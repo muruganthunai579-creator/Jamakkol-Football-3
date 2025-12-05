@@ -146,7 +146,6 @@ export const getDistanceQuality = (distance: number) => {
   return { label: 'Neutral', color: 'text-slate-400' };
 };
 
-// Calculate the Drik Panchang Style Daily Schedule
 export const calculateDailyHoras = (dateStr: string, location: { lat: number, lng: number }): HoraSegment[] => {
   const dateObj = new Date(dateStr);
   const { sunrise, sunset } = getSunTimes(dateObj, location.lat, location.lng);
@@ -225,18 +224,15 @@ export const calculateHora = (dateStr: string, timeStr: string, location?: { lat
 
 // --- DYNAMIC THEME GENERATOR ---
 export const generateMatchTheme = (dateStr: string, timeStr: string): MatchTheme => {
-    // Create a simple hash from date+time to ensure consistent colors for the same input
     const input = dateStr + timeStr;
     let hash = 0;
     for (let i = 0; i < input.length; i++) {
         hash = input.charCodeAt(i) + ((hash << 5) - hash);
     }
     
-    // Generate two distinct hues
     const hue1 = Math.abs(hash % 360);
     const hue2 = Math.abs((hash * 7) % 360);
     
-    // Create Home and Away Gradients
     const homeGradient = `linear-gradient(135deg, hsl(${hue1}, 80%, 60%), hsl(${hue1}, 70%, 40%))`;
     const awayGradient = `linear-gradient(135deg, hsl(${hue2}, 80%, 60%), hsl(${hue2}, 70%, 40%))`;
     
@@ -264,8 +260,7 @@ export const calculateMatchDominance = (
   const [startHour, startMinute] = startTimeStr.split(':').map(Number);
   const GRAHAS = ['SUN', 'MOON', 'MARS', 'MERCURY', 'JUPITER', 'VENUS', 'SATURN'];
   const SEGMENTS = 8;
-  // Calculate flow for 98 minutes (standard match + stoppage) split into 8 segments
-  const segmentDuration = 98 / SEGMENTS; 
+  const segmentDuration = 98 / SEGMENTS; // 98 minutes total duration
   
   let homeScore = 50;
   let awayScore = 50;

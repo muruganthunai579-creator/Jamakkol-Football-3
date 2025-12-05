@@ -38,7 +38,6 @@ export const INITIAL_CITY_SEARCH = [
   { id: 8, name: 'Milan', latitude: 45.4642, longitude: 9.1900, country: 'Italy' },
 ];
 
-// Relationships based on the provided image logic
 export const PLANET_RELATIONS: Record<string, { friends: string[], neutral: string[], enemies: string[] }> = {
   SUN: { 
     friends: ['MOON', 'MARS', 'JUPITER'], 
@@ -84,7 +83,7 @@ export const PLANET_RELATIONS: Record<string, { friends: string[], neutral: stri
     friends: ['MARS', 'VENUS', 'SATURN'], 
     neutral: ['MERCURY', 'JUPITER'], 
     enemies: ['SUN', 'MOON'] 
-  }
+  },
 };
 
 export const PLANET_STRENGTHS: Record<string, { aatchi: number[], ucham: number, neecham: number }> = {
